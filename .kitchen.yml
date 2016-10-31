@@ -1,22 +1,31 @@
 ---
 driver:
   name: vagrant
+  customize:
+    cpus: 2
+    memory: 4096
 
 provisioner:
   name: chef_zero
 
-# Uncomment the following verifier to leverage Inspec instead of Busser (the
-# default verifier)
-# verifier:
-#   name: inspec
-#   format: doc
+#Uncomment the following verifier to leverage Inspec instead of Busser (the
+#default verifier)
+verifier:
+  name: inspec
+  format: doc
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7.2
+  - name: windows-2012r2
+    driver_config:
+      box: mwrock/Windows2012R2
+
+
+#transport:
+#  name: winrm
+#  port: 55985
+#  rdp_port: 33389
 
 suites:
   - name: default
     run_list:
       - recipe[dsc_test::default]
-    attributes:

@@ -5,3 +5,5 @@ license 'all_rights'
 description 'Installs/Configures dsc_test'
 long_description 'Installs/Configures dsc_test'
 version '0.1.0'
+
+depends 'powershell'
